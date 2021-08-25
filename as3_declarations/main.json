@@ -11,10 +11,10 @@
       "app": {
         "class": "Application",
         "template": "https",
-        "serviceMain": {
+        "hdfctest": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "10.0.0.50"
+            "10.0.0.90"
           ],
           "serverTLS": {"bigip":"/Common/clientssl"}
         }
