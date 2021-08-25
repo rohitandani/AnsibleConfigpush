@@ -1,36 +1,16 @@
----
-name: Ansible Run
-
-on:
-  push:
-    branches:
-      - "master"
-  pull_request:
-
-jobs:
-  ansible:
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+        jobs:
+  printInputs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          ansible-galaxy install -r requirements.yml
-      - name: Run playbook
-        env:
-          AWS_ACCESS_KEY_ID: "ASIA2HD7NEBMTARBJY2Y"
-          AWS_SECRET_ACCESS_KEY: "MvqeMlYRx7DKOTOAdiZdOhWdMyTJCFcjEdJYl8Gw"
-          AWS_SECURITY_TOKEN: "IQoJb3JpZ2luX2VjEA8aCXVzLWVhc3QtMSJHMEUCIQCxB3dti/tmnQ0ONV6mSken+6rFSr6UiK8779tGQPnhbAIgXMQiGygwfDqyHL+MJinWypYWxYRuUf2yNuGXL6e95D8qiAMIRxACGgw3MDI0OTQzNTE0NDkiDEwguJOGIXuHkGDfKirlAs7Ej6EzKgKXa7zcmKyb2UmGQzSWt79DkUAOcd01hXT5r/B6Nn8BFkPsxbZQdxh9BXLrLI4p9BkdEOoCGaJHmJ/903Rt/Fb//hS9bIyIx/200RBAw6n8oYpUClnNKqvlXrFYNLQZrUtq7OqaTCj0ychd9yLsMYlR1ipMd+NfM8Iinn2zG11DAistpcsHFDw4eRnpJ5xzlJXYFcZ2AjSsdAO6X6MvSn+7S//gwzg604uzuSpKMd5Z7MVjTitgQtw+fmQ4MKux+XTwaF+ZITk+qeZW1Rf+hIfuYBo0MTcxal6HFvz5rzKH0nkiEWw72GGZNGuQNlotRz/0Sin+oaRccU+i2cLaMCb/aHFReuzKmg240micCqflsC8abPDQci1B2M0b2uvtV/FnbQiIWd6Xejje72ZRriGPVy8BCz8LjPmNc+pWokqygaoEuE2T3F1cGjNWYwHa488IP0UsrqMUP6xfJEZLuDCvnpmJBjqmAVqiR2hNnOYmGTriESbFoIOaRbqPLcRnGYOzerKSh4d/8JvE9fkcDYC3vasapxHIpWGLtVP+Xpr+045SjXT1ObQyP40l0RGa9weOGLVW8Szmj6Vgx8siiFX35GYT3lHLDkByDPuajtY0khsIBVYlGlrV7rifkDhwjI4D7kTQk5RQlyfWjGlApDc2tr1pPAuGtKCpit0hKLSFKNZZNOj2T8PVfMmY7RQ="
-          AWS_REGION: "ap-northeast-1"
-          BIGIP_USERNAME: "admin"
-          BIGIP_PASSWORD: "q5Ynyi4gsyhgLtxK"
-          AWS_BUCKET_NAME: "default-judmf-bigip-1arm-as3"
-          BIGIP_PORT: "8443"
-        run: |
-          ansible-playbook site.yml
+    - run: |
+        echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Tags: ${{ github.event.inputs.tags }}" 
