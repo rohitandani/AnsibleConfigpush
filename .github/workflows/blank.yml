@@ -7,12 +7,6 @@ on:
         default: 'warning'
       tags:
         description: 'Test scenario tags'
-name: Ansible Run
- push:
-    branches:
-      - "master"
-  pull_request:
-
 jobs:
   ansible:
     runs-on: ubuntu-latest
