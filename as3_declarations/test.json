@@ -6,7 +6,7 @@
     "class": "ADC",
     "schemaVersion": "3.20.0",
     "id": "hdfc",
-    "test": {
+    "hdfc": {
       "class": "Tenant",
       "app": {
         "class": "Application",
@@ -14,7 +14,7 @@
         "serviceMain": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "10.0.0.20"
+            "10.0.0.30"
           ],
           "serverTLS": {"bigip":"/Common/clientssl"}
         }
