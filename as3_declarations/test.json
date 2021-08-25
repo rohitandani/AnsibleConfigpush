@@ -14,7 +14,7 @@
         "serviceMain": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "10.0.0.30"
+            "10.0.0.60"
           ],
           "serverTLS": {"bigip":"/Common/clientssl"}
         }
