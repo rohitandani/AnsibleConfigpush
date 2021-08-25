@@ -9,7 +9,7 @@
   tasks:
     - name: Get autoscaling group
       ec2_asg_info:
-        name: "default-bigip-1arm-asg"
+        name: "mydemonewAWSPOOL-bigip-asg-f5c7"
       register: asgs
 
     - name: Create EC2 instance ID list
