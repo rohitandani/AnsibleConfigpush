@@ -8,9 +8,7 @@ on:
       tags:
         description: 'Test scenario tags'
 name: Ansible Run
-
-on:
-  push:
+ push:
     branches:
       - "master"
   pull_request:
